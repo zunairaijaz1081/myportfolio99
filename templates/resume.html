@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Personal Portfolio{% endblock title %}
+
+{% block content %}
+     
+  
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume active" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Riphah International University</h4>
+
+              <span>2020 — 2024</span>
+
+              <p class="timeline-text">
+               Bachelor of Science in Computer Science
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Aspire Group of College</h4>
+
+              <span>2018 — 2020</span>
+
+              <p class="timeline-text">
+               Intermediate in Pre-Engineering
+              </p>
+
+            </li>
+
+            {% comment %} <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">High school of art and design</h4>
+
+              <span>2002 — 2004</span>
+
+              <p class="timeline-text">
+                Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
+                magni dolores
+                eos.
+              </p>
+
+            </li> {% endcomment %}
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Manual Outreach & Link Building</h4>
+
+              <span>2020 — Present</span>
+
+              <p class="timeline-text">
+                Executed manual, white-hat outreach for guest posts and niche edits on high-DR sites (30–80+), including Casino & iGaming niches.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Email Outreach & White-Label Services</h4>
+
+              <span>2020 — Present </span>
+
+              <p class="timeline-text">
+              Ran personalized outreach campaigns for bloggers/editors, offering white-label solutions to agencies.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title"> Link Prospecting & Strategy</h4>
+
+              <span>2020 — Present</span>
+
+              <p class="timeline-text">
+             Used Ahrefs, SEMrush, and Google Operators for prospecting, competitor gap analysis, and niche site targeting.
+              </p>
+
+            </li>
+              <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title"> Campaign Management & SEO Tools</h4>
+
+              <span>2020 — Present</span>
+
+              <p class="timeline-text">
+             Managed campaigns via Google Sheets, with strong anchor text planning and link relevancy checks.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+      <section class="skill">
+  <h3 class="h3 skills-title">My skills</h3>
+
+  <ul class="skills-list content-card">
+    {% for skill in skills %}
+      <li class="skills-item">
+        <div class="title-wrapper">
+          <h5 class="h5">{{ skill.name }}</h5>
+          <data value="{{ skill.percentage }}">{{ skill.percentage }}%</data>
+        </div>
+        <div class="skill-progress-bg">
+          <div class="skill-progress-fill" style="width: {{ skill.percentage }}%;"></div>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+
+
+{% endblock %}

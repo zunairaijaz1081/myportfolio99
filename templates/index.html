@@ -1,0 +1,303 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Personal Portfolio{% endblock %}
+
+{% block content %}
+<!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+    I'm Ahmad Ramzan, a Link Building & Outreach Specialist with 3+ years of experience.
+I help businesses grow through high-quality, niche-relevant backlinks.
+
+          <p>
+           My expertise includes white-hat strategies like guest posting, outreach, and link insertions.
+I've worked with clients in SaaS, Tech, Finance, SEO, iGaming, and more.
+I focus on ethical SEO and building real, impactful relationships.
+My links drive real results — improving rankings, traffic, and authority.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        {% comment %} <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                   <img src="{% static 'img/icon-design.svg' %}"
+                 alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web design</h4>
+
+                <p class="service-item-text">
+                  The most modern and high-quality design made at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                  <img src="{% static 'img/icon-dev.svg' %}" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web development</h4>
+
+                <p class="service-item-text">
+                  High-quality development of sites at the professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="{% static 'img/icon-app.svg' %}" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Mobile apps</h4>
+
+                <p class="service-item-text">
+                  Professional development of applications for iOS and Android.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+               <img src="{% static 'img/icon-photo.svg' %}" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photography</h4>
+
+                <p class="service-item-text">
+                  I make high-quality photos of any category at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section> {% endcomment %}
+        <section class="service">
+  <h3 class="h3 service-title">What I'm Serving</h3>
+
+  <ul class="service-list">
+    {% for service in services %}
+    <li class="service-item">
+      <div class="service-icon-box">
+        <img src="{{ service.icon.url }}" alt="{{ service.title }} icon" width="40">
+      </div>
+      <div class="service-content-box">
+        <h4 class="h4 service-item-title">{{ service.title }}</h4>
+        <p class="service-item-text">{{ service.description }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+
+        <!--
+          - testimonials
+        -->
+
+    <section class="testimonials">
+  <h3 class="h3 testimonials-title">Testimonials</h3>
+  <ul class="testimonials-list has-scrollbar">
+    {% for testimonial in testimonials %}
+    <li class="testimonials-item">
+      <div class="content-card" data-testimonials-item>
+        <figure class="testimonials-avatar-box">
+          <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" width="60" data-testimonials-avatar>
+        </figure>
+
+        <h4 class="h4 testimonials-item-title" data-testimonials-title>{{ testimonial.name }}</h4>
+
+        <div class="testimonials-text" data-testimonials-text>
+          <p>{{ testimonial.content|truncatewords:30 }}</p>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+
+        <!--
+          - testimonials modal
+        -->
+
+       <div class="modal-container" data-modal-container>
+  <div class="overlay" data-overlay></div>
+  {% if testimonials %}
+  <section class="testimonials-modal">
+    <button class="modal-close-btn" data-modal-close-btn>
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+
+    <div class="modal-img-wrapper">
+      <figure class="modal-avatar-box">
+        <img src="{{ testimonials.0.image.url }}" alt="{{ testimonials.0.name }}" width="80" data-modal-img>
+      </figure>
+      <img src="{% static 'img/icon-quote.svg' %}" alt="quote icon">
+    </div>
+
+    <div class="modal-content">
+      <h4 class="h3 modal-title" data-modal-title>{{ testimonials.0.name }}</h4>
+      <time datetime="{{ testimonials.0.date }}">{{ testimonials.0.date }}</time>
+      <div data-modal-text>
+        <p>{{ testimonials.0.content }}</p>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+
+        <!--
+          - clients
+        -->
+
+      {% comment %} <section class="clients">
+  <h3 class="h3 clients-title">Clients</h3>
+
+  <ul class="clients-list has-scrollbar">
+    {% for client in clients %}
+      <li class="clients-item">
+        <a href="#">
+          <img src="{{ client.logo.url }}" alt="{{ client.name }}">
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</section> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="clients">
+
+  <!-- Inline CSS for hover effect -->
+  <style>
+    .clients-item a h4 {
+      color: #FFFFFF;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .clients-item a h4:hover {
+      color: #CEB15A;
+     
+    }
+  </style>
+
+  <h3 class="h3 clients-title" style="margin-bottom: 30px;">Clients</h3>
+  
+  <ul class="clients-list has-scrollbar" style="display: flex; overflow-x: auto; padding: 30px 30px 35px; list-style: none;">
+
+    <li class="clients-item" style="margin-right: 20px; text-align: center;">
+      <a href="https://mobilunity.com/"><h4>mobilunity.com</h4></a>
+       <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Анна Самонюк)</p>
+    </li>
+
+ <li class="clients-item" style="margin-right: 20px; text-align: center;">
+      <a href="https://trackier.com/"><h4>trackier.com</h4></a>
+       <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Neha Khatana)</p>
+    </li>
+
+    <li class="clients-item" style="margin-right: 20px; text-align: center;">
+      <a href="https://www.offgamers.com/"><h4>offgamers.com</h4></a>
+       <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Sarah Paul)</p>
+    </li>
+
+    <li class="clients-item" style="margin-right: 20px; text-align: center;">
+      <a href="https://42dm.net/"><h4>42dm.net</h4></a>
+       <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Anya Samoniuk)</p>
+    </li>
+
+    <li class="clients-item" style="margin-right: 20px; text-align: center;">
+      <a href="https://murf.ai/"><h4>murf.ai</h4></a>
+       <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Yashwanth Lokesh)</p>
+    </li>
+
+    <li class="clients-item" style="margin-right: 20px; text-align: center;">
+      <a href="https://www.adlift.com/"><h4>adlift.com</h4></a>
+       <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Archita Mehra)</p>
+    </li>
+
+    <li class="clients-item" style="margin-right: 20px; text-align: center;">
+      <a href="https://invideo.io/"><h4>invideo.io</h4></a>
+       <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Mehul Ghodasara)</p>
+    </li>
+
+    <li class="clients-item" style="margin-right: 20px; text-align: center;">
+      <a href="https://mlsdev.com/"><h4>misdev.com</h4></a>
+       <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Ana Lastovetska)</p>
+    </li>
+<li class="clients-item" style="margin-right: 20px; margin-bottom: 20px; text-align: center;">
+  <a href="https://www.leadersinstitute.com/">
+    <h4>leadersinstitute.com</h4>
+    <p style="color: #CCCCCC; font-size: 14px; margin: 5px 0 0;">(Chad Davis)</p>
+  </a>
+</li>
+
+
+
+  </ul>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+      
+
+      
+
+
+
+
+{% endblock %}
+
